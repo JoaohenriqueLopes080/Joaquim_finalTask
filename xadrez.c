@@ -1,10 +1,20 @@
 #include<stdio.h>
 #include<stdbool.h>
 
+// Nosso Codigo Ate Agora
 
 int main() {
 
 }
+
+
+
+
+
+
+
+
+
 
 
 // fazer por ordem 
