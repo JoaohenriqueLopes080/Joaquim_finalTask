@@ -13,7 +13,7 @@ Consiste no desenvolvimento de um algoritmo que segue o exemplo de Xadrez, onde 
 
 - O tabuleiro possui **5 linhas** e **6 colunas**.
 - Cada jogador controla três peças diferentes: `x`, `y`, `z` (minúsculas para um jogador, maiúsculas para o outro).
-- As peças são posicionadas inicialmente conforme o enunciado do trabalho (ver código e imagens).
+- As peças são posicionadas inicialmente conforme o enunciado do trabalho.
 - Cada tipo de peça possui regras próprias de movimentação:
   - **Peça X:** Move-se até 2 casas em qualquer direção (horizontal, vertical ou diagonal), desde que o caminho não esteja bloqueado.
   - **Peça Y:** Move-se exatamente 2 casas, somando linha e coluna, podendo ser em "L" ou reto, sem obstáculos.
