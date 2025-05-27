@@ -21,5 +21,4 @@ Consiste no desenvolvimento de um algoritmo que segue o exemplo de Xadrez, onde 
 - O jogo é realizado em turnos, onde o jogador informa a posição de origem e destino da peça que deseja mover.
 - O movimento só é realizado se for válido conforme as regras da peça.
 
-
-## Feito Por João Henrique, Nilo E Vitor
+## Feito Por João Henrique, Nilo Maraschin E Vitor Da Penha
