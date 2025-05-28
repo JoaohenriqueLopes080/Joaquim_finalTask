@@ -15,8 +15,7 @@ bool is_path_blocked(int start_row, int start_col, int end_row, int end_col, cha
   
     while (r != end_row || c != end_col) {
         if (board[r][c] != ' ') 
-        
-        return true;
+            return true;
         if (r != end_row) r += dr;
         if (c != end_col) c += dc;
     }
@@ -44,17 +43,15 @@ bool is_valid_X_move(int start_row, int start_col, int end_row, int end_col, cha
 }
 
 bool is_valid_Y_move(int start_row, int start_col, int end_row, int end_col, char board[ROWS][COLS]) {
-    int distancia = abs(end_row - start_row) + abs(end_col - start_col);
+    int delta_row = abs(end_row - start_row);
+    int delta_col = abs(end_col - start_col);
 
-    if (distancia == 2) {
+    if ((delta_row == 2 && delta_col == 0) || (delta_row == 0 && delta_col == 2)) {
         if (is_path_blocked(start_row, start_col, end_row, end_col, board)) {
             return false;
-        } else {
-            if (is_upper(board[end_row][end_col]) || board[end_row][end_col] == ' ') {
-                return true;
-            } else {
-                return false;
-            }
+        }
+        if (is_upper(board[end_row][end_col]) || board[end_row][end_col] == ' ') {
+            return true;
         }
     } 
     return false;
@@ -69,7 +66,9 @@ bool is_valid_Z_move(int start_row, int start_col, int end_row, int end_col, cha
             if (is_path_blocked(start_row, start_col, end_row, end_col, board)) {
                 return false;
             }
-            return board[end_row][end_col] != 'Y';
+            if (board[end_row][end_col] == ' ' || (is_upper(board[end_row][end_col]) && board[end_row][end_col] != 'Y')) {
+                return true;
+            }
         }
     }
     return false;
@@ -96,7 +95,6 @@ bool make_move(int start_row, int start_col, int end_row, int end_col, char boar
     }
     return false;
 }
-
 
 bool pertence_ao_jogador(char peca) {
     return (jogador_atual == 0 && islower(peca)) || 
@@ -128,7 +126,7 @@ bool movimento_permitido(int start_row, int start_col, int end_row, int end_col,
 }
 
 int main() {
-     setlocale(LC_ALL, "Portuguese");
+    setlocale(LC_ALL, "Portuguese");
     char tabuleiro[ROWS][COLS] = {
         {' ', ' ', 'Z', ' ', 'Y', ' '},
         {' ', ' ', ' ', ' ', ' ', ' '},
@@ -161,20 +159,19 @@ int main() {
         printf("Digite (linha coluna) de origem e destino (ou -1 para sair): \n");
         
         printf("Linha Inicial:");
-        scanf("%d ", &start_row);
+        scanf("%d", &start_row);
 
-        printf("Coluna Inicial");
-        scanf("%d ", &start_col);
+        printf("Coluna Inicial:");
+        scanf("%d", &start_col);
 
         printf("Linha Final:");
-        scanf("%d ", &end_row);
+        scanf("%d", &end_row);
 
-        printf("Coluna Final");
-        scanf("%d ", &end_col);
+        printf("Coluna Final:");
+        scanf("%d", &end_col);
 
-        
         if (start_row == -1) 
-        break;
+            break;
         
         if (movimento_permitido(start_row, start_col, end_row, end_col, tabuleiro)) {
             printf("Movimento valido!\n");
